@@ -14,6 +14,7 @@ f1_keywords:
   - "offline install [Visual Studio]"
   - "offline installer [Visual Studio]"
   - "ISO [Visual Studio]"
+  - "[Visual Studio] installer command-line"
 ms.assetid: 7bd7e724-7bfd-43f1-9935-981919be5a00
 author: "TerryGLee"
 ms.author: "tglee"
@@ -50,14 +51,25 @@ Your setup file&mdash;or to be more specific, a bootstrapper file&mdash;will mat
 |Visual Studio Professional |**vs_professional.exe**|  
 |Visual Studio Community |**vs_community.exe**|
 
-## Create an offline installation folder
-To create an offline installation with all languages and all features, use one of the commands from the following examples.
+## Command-Line Help
+The bootstap installer can be used to generate a local help file by executing ```vs_enterprise.exe --help```
 
-(Make sure that you run the command from your Download directory. Typically, that's `C:\Users\<username>\Downloads` on a computer that is running Windows 10).
+After execution, the help file will launch in your default browser from **`%APPDATA%`**. It containts detailed information about all the command-line options, and a description of what they are used for.
+
+Alternatively, to learn more about the options you can use to customize your installation online, see our [Use command-line parameters to install Visual Studio 2017 ](use-command-line-parameters-to-install-visual-studio.md) page.
+
+## Create an offline installation folder
+To create an offline installation with **ALL** languages, workloads and components, the only command-line option needed is `--layout <dir>` where `<dir>` is a directory you specify for the offline install cache. 
+
+(Make sure that you run the command from your Download directory. Typically, that's `%APPDATA%\Downloads` on a computer that is running Windows 10). **`%APPDATA%`** is typically `C:\Users\<username>\`
+
+The following examples will create a full offline install in `c:\vs2017offline`:
+
 
 - For Visual Studio Enterprise, run: <br>  ```vs_enterprise.exe --layout c:\vs2017offline```
 - For Visual Studio Professional, run: <br> ```vs_professional.exe --layout c:\vs2017offline```
 - For Visual Studio Community, run: <br> ```vs_community.exe --layout c:\vs2017offline```
+
 
 For more examples, see the [How to customize your offline installer](#how-to-customize-your-offline- installer) section on this page.
 
@@ -78,8 +90,6 @@ There are many options you can use to customize your offline installer. Here are
  - To download all workloads and components for multiple languages, run: <br>```vs_enterprise.exe --layout C:\vs2017offline --lang en-US de-DE ja-JP```
  - To download one workload for all languages, run <br> ```vs_enterprise.exe --layout C:\vs2017offline --add Microsoft.VisualStudio.Workload.Azure ```
  - To download two workloads and one optional component for three languages, run: <br>```vs_enterprise.exe --layout C:\vs2017offline --add Microsoft.VisualStudio.Workload.Azure Microsoft.VisualStudio.Workload.ManagedDesktop Component.GitHub.VisualStudio --lang en-US de-DE ja-JP ```
-To learn more about the options you can use to customize your installation, see our [Use command-line parameters to install Visual Studio 2017 ](use-command-line-parameters-to-install-visual-studio.md) page.
-
 
 ### How to update an offline installer
 You might want to update your offline installer at a later date. Here's how.
